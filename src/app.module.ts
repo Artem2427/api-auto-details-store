@@ -5,15 +5,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getPostgresConfig } from '@app/configs/typeorm.config';
 import { TagModule } from '@app/tag/tag.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: getPostgresConfig,
-    }),
+    DatabaseModule,
     TagModule,
   ],
   controllers: [AppController],
