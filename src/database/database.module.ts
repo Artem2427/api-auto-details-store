@@ -14,9 +14,10 @@ import { TagRepository } from './repositories/tag.repository';
       inject: [ConfigService],
       useFactory: getPostgresConfig,
     }),
+
     TypeOrmModule.forFeature([TagEntity]),
   ],
   providers: [TagRepository],
-  exports: [TypeOrmModule, TagRepository],
+  exports: [TagRepository],
 })
 export class DatabaseModule {}
