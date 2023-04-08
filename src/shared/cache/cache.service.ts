@@ -9,14 +9,21 @@ export class CacheService {
     return `${prefix}:${args.join(':')}`;
   }
 
+  public async getAllKeys(): Promise<any> {
+    return await this.cacheManager.store.keys();
+  }
+
   public async set<T>(key: string, data: T, ttl?: number): Promise<void> {
     const options: CachingConfig = {};
 
     if (ttl) {
       options.ttl = ttl;
     }
-    await this.cacheManager.set(key, JSON.stringify(data), options, (error) => {
-      console.error(error);
+    console.log(JSON.stringify(data), 'JSON.stringify(data)');
+    // JSON.stringify(data)
+
+    this.cacheManager.set(key, JSON.stringify(data), options, (error) => {
+      console.error(error, 'error');
     });
   }
 

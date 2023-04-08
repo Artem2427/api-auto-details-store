@@ -11,12 +11,16 @@ export class TagService {
   ) {}
   async findAll(): Promise<any> {
     const cacheKey = this.cacheService.generateDynamicKey('tags', ['all']);
+
     const cacheData = await this.cacheService.get(cacheKey);
     if (cacheData) {
       return cacheData;
     }
 
-    return await this.tagRepository.findAll();
+    const tags = await this.tagRepository.findAll();
+    await this.cacheService.set(cacheKey, tags);
+
+    return tags;
   }
 
   async test() {
