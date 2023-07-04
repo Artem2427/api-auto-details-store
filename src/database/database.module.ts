@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -6,6 +6,7 @@ import { getPostgresConfig } from '@app/configs/typeorm.config';
 import { TagEntity } from '@app/tag/tag.entity';
 import { TagRepository } from './repositories/tag.repository';
 
+@Global()
 @Module({
   imports: [
     ConfigModule,

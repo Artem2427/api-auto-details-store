@@ -19,8 +19,6 @@ export class CacheService {
     if (ttl) {
       options.ttl = ttl;
     }
-    console.log(JSON.stringify(data), 'JSON.stringify(data)');
-    // JSON.stringify(data)
 
     this.cacheManager.set(key, JSON.stringify(data), options, (error) => {
       console.error(error, 'error');

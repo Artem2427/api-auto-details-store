@@ -13,6 +13,7 @@ export class TagService {
     const cacheKey = this.cacheService.generateDynamicKey('tags', ['all']);
 
     const cacheData = await this.cacheService.get(cacheKey);
+
     if (cacheData) {
       return cacheData;
     }
