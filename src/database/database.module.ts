@@ -4,7 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { getPostgresConfig } from '@app/configs/typeorm.config';
 import { TagEntity } from '@app/tag/tag.entity';
+import { UserEntity } from '@app/user/entity/user.entity';
+
 import { TagRepository } from './repositories/tag.repository';
+import { UserRepository } from './repositories/user.repository';
 
 @Global()
 @Module({
@@ -16,9 +19,9 @@ import { TagRepository } from './repositories/tag.repository';
       useFactory: getPostgresConfig,
     }),
 
-    TypeOrmModule.forFeature([TagEntity]),
+    TypeOrmModule.forFeature([TagEntity, UserEntity]),
   ],
-  providers: [TagRepository],
-  exports: [TagRepository],
+  providers: [TagRepository, UserRepository],
+  exports: [TagRepository, UserRepository],
 })
 export class DatabaseModule {}

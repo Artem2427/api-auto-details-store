@@ -1,0 +1,15 @@
+{
+  "here": "here",
+  "DTO_ERROR": {
+    "IS_REQUIRED": "is required",
+    "IS_STRING": "must be a string",
+    "MIN_LENGTH": "must be longer than or equal to {count} characters",
+    "MAX_LENGTH": "must be less than or equal to {count} characters",
+    "IS_EMAIL": "must be an email",
+    "IS_UUID": "Not valid Id"
+  },
+  "EXCEPTIONS": {
+    "BODY": "The request body contains invalid data."
+  },
+  "FORBIDDEN_FOR_ROLE": "No access"
+}

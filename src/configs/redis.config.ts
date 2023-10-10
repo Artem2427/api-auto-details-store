@@ -1,4 +1,4 @@
-import { CacheModuleOptions } from '@nestjs/common';
+import { CacheModuleOptions } from '@nestjs/cache-manager';
 import { ConfigService } from '@nestjs/config';
 import { StoreConfig } from 'cache-manager';
 import * as redisStore from 'cache-manager-ioredis';

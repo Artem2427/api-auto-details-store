@@ -1,6 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { TagService } from './tag.service';
-import { ApiExcludeEndpoint, ApiHideProperty, ApiSecurity, ApiTags } from '@nestjs/swagger';
+import {
+  ApiExcludeEndpoint,
+  ApiHideProperty,
+  ApiSecurity,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @Controller('tags')
 @ApiTags('Tags')
@@ -11,15 +16,10 @@ export class TagController {
   // @ApiSecurity('Test')
   @Get()
   async findAll() {
-    // const tags = await this.tagService.findAll();
-    // return {
-    //   tags: tags.map((tag) => tag.name),
-    // };
-
     return await this.tagService.findAll();
   }
   @Get('test')
-  async findAll1() {
+  async findAll1(@Param('id', new ParseIntPipe()) id: number) {
     const tags = await this.tagService.test();
     return tags;
   }

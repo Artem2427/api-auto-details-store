@@ -1,4 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+} from '@nestjs/common';
 import { TagRepository } from '@app/database/repositories/tag.repository';
 import { CacheService } from '@app/shared/cache/cache.service';
 
@@ -13,6 +19,8 @@ export class TagService {
     const cacheKey = this.cacheService.generateDynamicKey('tags', ['all']);
 
     const cacheData = await this.cacheService.get(cacheKey);
+
+    throw new HttpException('Test error', HttpStatus.BAD_REQUEST);
 
     if (cacheData) {
       return cacheData;
